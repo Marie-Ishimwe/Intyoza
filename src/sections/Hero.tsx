@@ -1,10 +1,17 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Smile from "@/assets/Smile.png";
-import Other from "@/assets/Other.png";
 import { motion } from "framer-motion";
 
 export const Hero = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="hero" className="">
       <div className="container mx-auto px-5 md:flex md:items-center md:justify-between">
@@ -25,10 +32,13 @@ export const Hero = () => {
             to make informed decisions and lead healthier lives.
           </p>
           <div className="flex gap-4">
-            <Button>Explore Our App</Button>
+            <Button onClick={() => scrollToSection("app-overview")}>
+              Explore Our App
+            </Button>
             <Button
               variant="outline"
               className="font-medium border border-green-800 text-green-800"
+              onClick={() => scrollToSection("training-center")}
             >
               Visit Our Training Center
             </Button>
@@ -41,8 +51,6 @@ export const Hero = () => {
             src={Smile}
             alt="Hero Image"
             className="rounded-full bg-green-700/80 mx-auto"
-            // width={550}
-            // height={520}
             width={550}
             height={450}
           />
